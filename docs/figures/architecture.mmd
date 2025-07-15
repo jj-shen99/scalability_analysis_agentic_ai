@@ -1,0 +1,24 @@
+graph TD
+    A[JMeter JTL Files] --> B[Core Module\nscalability_core.py]
+    B --> C[Models Module\nscalability_models.py]
+    B --> D[Algorithm Complexity Module\nalgorithm_complexity.py]
+    B --> E[Load Scalability Module\nload_scalability.py]
+    
+    C --> F[Visualization Module\nscalability_visualization_basic.py]
+    D --> F
+    E --> F
+    
+    F --> G[Markdown Reporting\nscalability_reporting_md.py]
+    F --> H[HTML Reporting\nscalability_reporting_html.py]
+    F --> I[DOCX Reporting\nscalability_reporting_docx.py]
+    
+    J[Main Module\nscalability_analyzer_main.py] --> B
+    J --> C
+    J --> D
+    J --> E
+    J --> F
+    J --> G
+    J --> H
+    J --> I
+    
+    K[Synthetic Data Generator\nsynthetic_data_generator.py] -.-> A

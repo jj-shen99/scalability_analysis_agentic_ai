@@ -1,0 +1,6 @@
+node_count,transaction_count,success_count,error_count,error_rate,avg_response_time,min_response_time,max_response_time,throughput,expected_scaling_factor,file
+1,5000,4950,50,0.01,200.13656565656566,46.0,361.0,100.0,1.0,/Users/jianjun.shen/perf-testing-ai/sample_generated_scripts/synthetic_usl_1node_20250715_141520.jtl
+2,5000,4950,50,0.01,106.82040404040404,18.0,202.0,186.9158878504673,1.8691588785046729,/Users/jianjun.shen/perf-testing-ai/sample_generated_scripts/synthetic_usl_2node_20250715_141520.jtl
+3,5000,4950,50,0.01,76.94343434343435,26.0,129.0,258.6206896551724,2.5862068965517238,/Users/jianjun.shen/perf-testing-ai/sample_generated_scripts/synthetic_usl_3node_20250715_141520.jtl
+4,5000,4950,50,0.01,63.05939393939394,19.0,105.0,314.9606299212598,3.149606299212598,/Users/jianjun.shen/perf-testing-ai/sample_generated_scripts/synthetic_usl_4node_20250715_141520.jtl
+6,5000,4950,50,0.01,51.33434343434343,17.0,93.0,387.09677419354836,3.8709677419354835,/Users/jianjun.shen/perf-testing-ai/sample_generated_scripts/synthetic_usl_6node_20250715_141520.jtl

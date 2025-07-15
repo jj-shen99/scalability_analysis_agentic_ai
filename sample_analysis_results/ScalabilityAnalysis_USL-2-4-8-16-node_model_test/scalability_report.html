@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalability Analysis Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .metrics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .metric-card {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            margin: 10px 0;
+        }
+        .metric-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .plot-container {
+            margin: 30px 0;
+        }
+        .plot-container img {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .plot-description {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .good {
+            color: #27ae60;
+        }
+        .warning {
+            color: #e67e22;
+        }
+        .critical {
+            color: #e74c3c;
+        }
+        .recommendation {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scalability Analysis Report</h1>
+        <p>Analysis generated on 2025-07-09 08:57:05</p>
+        <h2>Executive Summary</h2>
+        <p>
+            This report analyzes the scalability characteristics of the system under test across 4 
+            different resource levels (from 2 to 16).
+        </p>
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-label">Maximum Throughput</div>
+                <div class="metric-value">353.28 req/s</div>
+                <div>at resource level 8</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Best Response Time</div>
+                <div class="metric-value">56.05 ms</div>
+                <div>at resource level 8</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Maximum Speedup</div>
+                <div class="metric-value">1.98x</div>
+                <div>at resource level 8</div>
+                <div class="critical">49.4% efficiency</div>
+            </div>
+        </div>
+        <h2>Detailed Performance Metrics</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Resource Level</th>
+                    <th>Throughput (req/s)</th>
+                    <th>Avg Response Time (ms)</th>
+                    <th>Error %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="warning">
+                    <td>2</td>
+                    <td>178.83</td>
+                    <td>111.59</td>
+                    <td>1.00%</td>
+                </tr>
+                <tr class="warning">
+                    <td>4</td>
+                    <td>275.63</td>
+                    <td>70.34</td>
+                    <td>1.00%</td>
+                </tr>
+                <tr class="warning">
+                    <td>8</td>
+                    <td>353.28</td>
+                    <td>56.05</td>
+                    <td>1.00%</td>
+                </tr>
+                <tr class="warning">
+                    <td>16</td>
+                    <td>330.93</td>
+                    <td>60.92</td>
+                    <td>1.00%</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Basic Scalability Metrics</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Resource Level</th>
+                    <th>Throughput Speedup</th>
+                    <th>Scalability Efficiency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2</td>
+                    <td>1.00x</td>
+                    <td class="good">100.00%</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>1.54x</td>
+                    <td class="warning">77.07%</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>1.98x</td>
+                    <td class="critical">49.39%</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>1.85x</td>
+                    <td class="critical">23.13%</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Advanced Scalability Analysis</h2>
+        <h3>Amdahl's Law Analysis</h3>
+        <ul>
+            <li>Parallelizable portion: <strong>50.14%</strong></li>
+            <li>Serial portion: <strong>49.86%</strong></li>
+            <li>Theoretical maximum speedup: <strong>2.01x</strong></li>
+        </ul>
+        <h3>Gustafson's Law Analysis</h3>
+        <ul>
+            <li>Scalable portion: <strong>7.47%</strong></li>
+            <li>Fixed portion: <strong>92.53%</strong></li>
+        </ul>
+        <h3>Universal Scalability Law Analysis</h3>
+        <ul>
+            <li>Contention factor (σ): <strong>0.4986</strong></li>
+            <li>Coherency factor (κ): <strong>0.0000</strong></li>
+        </ul>
+        <h3>Model Interpretations</h3>
+        <ul>
+            <li><strong>Amdahl:</strong> Moderate parallelizability. The system can benefit from additional resources, but with diminishing returns.</li>
+            <li><strong>Gustafson:</strong> Poor scalability with problem size. The system has significant fixed overhead that limits scaling with workload growth.</li>
+            <li><strong>Usl:</strong> Moderate scalability. Noticeable contention and some coherency delays. Scaling will be limited.</li>
+        </ul>
+        <h2>Visual Analysis</h2>
+        <p>The following plots provide visual representation of the scalability characteristics.</p>
+        <div class="plot-container">
+            <h3>Throughput vs. Resource Level</h3>
+            <img src="throughput_vs_resource.png" alt="Throughput Plot">
+            <p class="plot-description">This plot shows how the system throughput changes as resources are added. 
+            The trend line indicates the overall scaling pattern.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Response Time vs. Resource Level</h3>
+            <img src="response_time_vs_resource.png" alt="Response Time Plot">
+            <p class="plot-description">This plot illustrates how response times are affected by resource scaling. 
+            Lower values indicate better performance.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Speedup vs. Resource Level</h3>
+            <img src="speedup_vs_resource.png" alt="Speedup Plot">
+            <p class="plot-description">This plot compares actual speedup against ideal linear speedup. 
+            The gap between actual and ideal lines indicates efficiency loss as resources scale.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Scalability Models Comparison</h3>
+            <img src="scalability_models_comparison.png" alt="Models Comparison Plot">
+            <p class="plot-description">This plot compares the actual speedup with predictions from different scalability laws. 
+            The closest model to actual data points indicates which theoretical model best describes the system's scaling behavior.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Theoretical Scalability Projections</h3>
+            <img src="theoretical_scalability_projections.png" alt="Theoretical Projections Plot">
+            <p class="plot-description">This plot shows theoretical projections of different scalability models based on observed data. 
+            It predicts how the system might scale with additional resources beyond those tested.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Comparative Scalability Model Characteristics</h3>
+            <img src="scalability_model_characteristics.png" alt="Model Characteristics Plot">
+            <p class="plot-description">This educational plot illustrates the fundamental differences between various scalability models 
+            with different parameters. It helps identify which theoretical model best describes your system's behavior.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Scalability Efficiency Analysis</h3>
+            <img src="scalability_efficiency.png" alt="Scalability Efficiency Plot">
+            <p class="plot-description">This plot shows how efficiently your system scales as resources increase. 
+            The efficiency is calculated as speedup divided by resource ratio, with 100% representing perfect linear scaling. 
+            Declining efficiency indicates diminishing returns from additional resources.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Efficiency Heatmap</h3>
+            <img src="efficiency_heatmap.png" alt="Efficiency Heatmap">
+            <p class="plot-description">This heatmap visualizes scaling efficiency between different resource levels. 
+            Each cell shows the efficiency when scaling from the baseline (row) to the target (column) resource level. 
+            Values close to 1.0 (green) indicate good scaling efficiency.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Cost Efficiency Analysis</h3>
+            <img src="cost_efficiency_analysis.png" alt="Cost Efficiency Analysis">
+            <p class="plot-description">This dual visualization shows the relationship between cost and performance (left) 
+            and the performance-to-cost ratio (right) for different resource levels. 
+            Higher values in the right plot indicate more cost-effective configurations.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Algorithm Complexity Analysis</h3>
+            <img src="algorithm_complexity_analysis.png" alt="Algorithm Complexity Analysis">
+            <p class="plot-description">This plot shows the algorithmic complexity of your system by fitting various complexity models 
+            (O(1), O(log n), O(n), etc.) to your performance data. The best fitting model indicates your system's computational 
+            complexity class, which influences how it will scale with increasing workloads.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Algorithm Complexity Analysis</h3>
+            <img src="algorithm_complexity_analysis.png" alt="Algorithm Complexity Analysis">
+            <p class="plot-description">This plot shows the algorithmic complexity of your system by fitting various complexity models 
+            (O(1), O(log n), O(n), etc.) to your performance data. The best fitting model indicates your system's computational 
+            complexity class, which influences how it will scale with increasing workloads.</p>
+        </div>
+        <div class="card">
+            <h4>Algorithm Complexity Interpretation</h4>
+            <p><strong>Best fitting model:</strong> O(log n)</p>
+            <p><strong>Confidence:</strong> Low confidence in the model fit. Results should be treated as preliminary.</p>
+            <p><strong>Explanation:</strong> The system appears to have logarithmic time complexity.</p>
+            <p><strong>Implications:</strong> This indicates very good scalability, typical of efficient search algorithms or data structures.</p>
+            <p><strong>Recommendations:</strong> This is already very efficient; focus on other aspects of optimization if needed.</p>
+        </div>
+        <div class="plot-container">
+            <h3>Load Scalability Analysis</h3>
+            <img src="load_scalability_analysis.png" alt="Load Scalability Analysis">
+            <p class="plot-description">This plot shows how your system performs under different load levels, highlighting 
+            the saturation point where throughput begins to level off and the optimal load point for best efficiency.</p>
+        </div>
+        <div class="card">
+            <h4>Load Scalability Interpretation</h4>
+            <p><strong>Saturation point:</strong> 8 users/requests</p>
+            <p><strong>Optimal load point:</strong> 8 users/requests</p>
+            <p><strong>Performance degradation observed:</strong> Yes</p>
+            
+            <h4>Key Insights</h4>
+            <ul>
+                <li>System throughput begins to saturate at approximately 8 users/requests.</li>
+                <li>The optimal load balancing throughput and response time is at 8 users/requests.</li>
+                <li>The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.</li>
+                <li>System shows performance degradation under high load, indicating potential resource exhaustion or bottlenecks.</li>
+                <li>Good correlation with Little's Law, with some deviation from ideal queueing.</li>
+            </ul>
+            
+            <h4>Recommendations</h4>
+            <ul>
+                <li>Investigate resource utilization (CPU, memory, connections) to identify the bottleneck causing degradation.</li>
+            </ul>
+        </div>
+        <div class="plot-container">
+            <h3>Load Capacity Model</h3>
+            <img src="load_capacity_model.png" alt="Load Capacity Model">
+            <p class="plot-description">This plot models your system's capacity using Universal Scalability Law, projecting maximum 
+            theoretical throughput and helping identify limiting factors (contention or coherency delays).</p>
+        </div>
+        <div class="card">
+            <h4>Load Scalability Interpretation</h4>
+            <p><strong>Saturation point:</strong> 8 users/requests</p>
+            <p><strong>Optimal load point:</strong> 8 users/requests</p>
+            <p><strong>Performance degradation observed:</strong> Yes</p>
+            
+            <h4>Key Insights</h4>
+            <ul>
+                <li>System throughput begins to saturate at approximately 8 users/requests.</li>
+                <li>The optimal load balancing throughput and response time is at 8 users/requests.</li>
+                <li>The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.</li>
+                <li>System shows performance degradation under high load, indicating potential resource exhaustion or bottlenecks.</li>
+                <li>Good correlation with Little's Law, with some deviation from ideal queueing.</li>
+            </ul>
+            
+            <h4>Recommendations</h4>
+            <ul>
+                <li>Investigate resource utilization (CPU, memory, connections) to identify the bottleneck causing degradation.</li>
+            </ul>
+        </div>
+        <h2>Optimization Suggestions</h2>
+        <div class="recommendation">
+            Consider optimizing the serial portions of the system, which account for 49.9% of execution time and limit maximum speedup to 2.0x.
+        </div>
+        <div class="recommendation">
+            High contention factor (σ=0.499). Consider reducing shared resource access or implementing more efficient locking/synchronization mechanisms.
+        </div>
+    </div>
+</body>
+</html>

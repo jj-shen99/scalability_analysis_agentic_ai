@@ -1,0 +1,1072 @@
+{
+  "analysis_results": [
+    {
+      "file": "/Users/jianjun.shen/perf-testing-ai/sample_jtl/synthetic_usl_12346/synthetic_usl_1node_20250715_141520.jtl",
+      "resource_level": 1,
+      "metrics": {
+        "total_requests": 5000,
+        "duration_seconds": 47.91,
+        "throughput": 104.36234606553955,
+        "avg_response_time": 200.0656,
+        "error_percentage": 1.0,
+        "percentiles": {
+          "p50": 200.0,
+          "p90": 252.0,
+          "p95": 267.0,
+          "p99": 290.0100000000002
+        }
+      },
+      "config": "Config 1",
+      "scalability_analysis": {
+        "resource_levels": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "actual_speedups": [
+          1.0,
+          1.7737218170375033,
+          2.4627325999794385,
+          2.940707095506997,
+          3.689073689073689
+        ],
+        "models": {
+          "amdahl": 0.877114065957294,
+          "gustafson": 0.5888891474073287,
+          "usl": [
+            0.10502209633734812,
+            0.00338710295183755
+          ]
+        },
+        "interpretations": {
+          "amdahl": {
+            "parallelizable_fraction": 0.877114065957294,
+            "serial_fraction": 0.12288593404270598,
+            "max_theoretical_speedup": 8.13762785619121,
+            "assessment": "Good parallelizability. The system can benefit significantly from additional resources."
+          },
+          "gustafson": {
+            "scalable_fraction": 0.5888891474073287,
+            "fixed_fraction": 0.4111108525926713,
+            "assessment": "Moderate scalability with problem size. The system has some fixed overhead that limits perfect scaling."
+          },
+          "usl": {
+            "contention_factor": 0.10502209633734812,
+            "coherency_delay": 0.00338710295183755,
+            "assessment": "Good scalability. Some contention but limited coherency issues. The system can scale reasonably well.",
+            "peak_concurrency": 132.11554481642105
+          }
+        },
+        "optimization_suggestions": [
+          "The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size."
+        ],
+        "theoretical_projections": {},
+        "insufficient_data": false,
+        "model_errors": {
+          "amdahl": 0.004114711994471594,
+          "gustafson": 0.21086675559092097,
+          "usl": 0.0013265314045604105
+        }
+      },
+      "advanced_analysis": {
+        "algorithm_complexity": {
+          "analysis": {
+            "success": true,
+            "best_fit": "O(log n)",
+            "models": {
+              "O(1)": {
+                "params": [
+                  99.65544
+                ],
+                "r_squared": 0.0,
+                "rmse": 53.51397656678486,
+                "function": "<function constant_time>"
+              },
+              "O(log n)": {
+                "params": [
+                  -83.63236673759094,
+                  182.78288956009385
+                ],
+                "r_squared": 0.9182429896356975,
+                "rmse": 15.30134915273021,
+                "function": "<function logarithmic_time>"
+              },
+              "O(n)": {
+                "params": [
+                  -26.313867567567566,
+                  183.85981621621625
+                ],
+                "r_squared": 0.71569277349979,
+                "rmse": 28.533902536359907,
+                "function": "<function linear_time>"
+              },
+              "O(n log n)": {
+                "params": [
+                  -11.068748929954777,
+                  146.09518523233157
+                ],
+                "r_squared": 0.6083078582177532,
+                "rmse": 33.49188979512254,
+                "function": "<function linearithmic_time>"
+              },
+              "O(n\u00b2)": {
+                "params": [
+                  -3.0805439650744715,
+                  140.31862033898304
+                ],
+                "r_squared": 0.5161504531522589,
+                "rmse": 37.223944624681124,
+                "function": "<function quadratic_time>"
+              },
+              "O(n\u00b3)": {
+                "params": [
+                  -0.41894576814421636,
+                  126.13281254671449
+                ],
+                "r_squared": 0.3870363643828585,
+                "rmse": 41.897159431082045,
+                "function": "<function cubic_time>"
+              },
+              "O(c^n)": {
+                "params": [
+                  -552487.7703637808,
+                  552671.6205624536,
+                  1.0000476189792216
+                ],
+                "r_squared": 0.7156613952829731,
+                "rmse": 28.535477097598914,
+                "function": "<function exponential_time>"
+              }
+            },
+            "data_points": 5
+          },
+          "interpretation": {
+            "success": true,
+            "best_model": "O(log n)",
+            "confidence": "High confidence in the model fit.",
+            "explanation": "The system appears to have logarithmic time complexity.",
+            "implications": "This indicates very good scalability, typical of efficient search algorithms or data structures.",
+            "recommendations": "This is already very efficient; focus on other aspects of optimization if needed.",
+            "r_squared": 0.9182429896356975
+          }
+        },
+        "load_scalability": {
+          "analysis": {
+            "success": true,
+            "saturation_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "peak_performance": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "response_time_inflection": {
+              "load": null,
+              "response_time": null,
+              "index": null
+            },
+            "optimal_load_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "response_time": 51.3598
+            },
+            "has_degradation": false,
+            "littles_law_correlation": 0.9578326876956131
+          },
+          "interpretation": {
+            "success": true,
+            "key_metrics": {
+              "saturation_load": 6,
+              "optimal_load": 6,
+              "has_degradation": false
+            },
+            "insights": [
+              "System throughput begins to saturate at approximately 6 users/requests.",
+              "The optimal load balancing throughput and response time is at 6 users/requests.",
+              "The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.",
+              "No performance degradation detected within the measured load range, suggesting good stability.",
+              "Strong correlation with Little's Law, indicating predictable queueing behavior."
+            ],
+            "recommendations": [
+              "Consider testing with higher load levels to identify the true system limits."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "/Users/jianjun.shen/perf-testing-ai/sample_jtl/synthetic_usl_12346/synthetic_usl_2node_20250715_141520.jtl",
+      "resource_level": 2,
+      "metrics": {
+        "total_requests": 5000,
+        "duration_seconds": 27.011,
+        "throughput": 185.10977009366556,
+        "avg_response_time": 106.8064,
+        "error_percentage": 1.0,
+        "percentiles": {
+          "p50": 107.0,
+          "p90": 135.0,
+          "p95": 143.0,
+          "p99": 157.01000000000022
+        }
+      },
+      "config": "Config 2",
+      "scalability_analysis": {
+        "resource_levels": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "actual_speedups": [
+          1.0,
+          1.7737218170375033,
+          2.4627325999794385,
+          2.940707095506997,
+          3.689073689073689
+        ],
+        "models": {
+          "amdahl": 0.877114065957294,
+          "gustafson": 0.5888891474073287,
+          "usl": [
+            0.10502209633734812,
+            0.00338710295183755
+          ]
+        },
+        "interpretations": {
+          "amdahl": {
+            "parallelizable_fraction": 0.877114065957294,
+            "serial_fraction": 0.12288593404270598,
+            "max_theoretical_speedup": 8.13762785619121,
+            "assessment": "Good parallelizability. The system can benefit significantly from additional resources."
+          },
+          "gustafson": {
+            "scalable_fraction": 0.5888891474073287,
+            "fixed_fraction": 0.4111108525926713,
+            "assessment": "Moderate scalability with problem size. The system has some fixed overhead that limits perfect scaling."
+          },
+          "usl": {
+            "contention_factor": 0.10502209633734812,
+            "coherency_delay": 0.00338710295183755,
+            "assessment": "Good scalability. Some contention but limited coherency issues. The system can scale reasonably well.",
+            "peak_concurrency": 132.11554481642105
+          }
+        },
+        "optimization_suggestions": [
+          "The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size."
+        ],
+        "theoretical_projections": {},
+        "insufficient_data": false,
+        "model_errors": {
+          "amdahl": 0.004114711994471594,
+          "gustafson": 0.21086675559092097,
+          "usl": 0.0013265314045604105
+        }
+      },
+      "advanced_analysis": {
+        "algorithm_complexity": {
+          "analysis": {
+            "success": true,
+            "best_fit": "O(log n)",
+            "models": {
+              "O(1)": {
+                "params": [
+                  99.65544
+                ],
+                "r_squared": 0.0,
+                "rmse": 53.51397656678486,
+                "function": "<function constant_time>"
+              },
+              "O(log n)": {
+                "params": [
+                  -83.63236673759094,
+                  182.78288956009385
+                ],
+                "r_squared": 0.9182429896356975,
+                "rmse": 15.30134915273021,
+                "function": "<function logarithmic_time>"
+              },
+              "O(n)": {
+                "params": [
+                  -26.313867567567566,
+                  183.85981621621625
+                ],
+                "r_squared": 0.71569277349979,
+                "rmse": 28.533902536359907,
+                "function": "<function linear_time>"
+              },
+              "O(n log n)": {
+                "params": [
+                  -11.068748929954777,
+                  146.09518523233157
+                ],
+                "r_squared": 0.6083078582177532,
+                "rmse": 33.49188979512254,
+                "function": "<function linearithmic_time>"
+              },
+              "O(n\u00b2)": {
+                "params": [
+                  -3.0805439650744715,
+                  140.31862033898304
+                ],
+                "r_squared": 0.5161504531522589,
+                "rmse": 37.223944624681124,
+                "function": "<function quadratic_time>"
+              },
+              "O(n\u00b3)": {
+                "params": [
+                  -0.41894576814421636,
+                  126.13281254671449
+                ],
+                "r_squared": 0.3870363643828585,
+                "rmse": 41.897159431082045,
+                "function": "<function cubic_time>"
+              },
+              "O(c^n)": {
+                "params": [
+                  -552487.7703637808,
+                  552671.6205624536,
+                  1.0000476189792216
+                ],
+                "r_squared": 0.7156613952829731,
+                "rmse": 28.535477097598914,
+                "function": "<function exponential_time>"
+              }
+            },
+            "data_points": 5
+          },
+          "interpretation": {
+            "success": true,
+            "best_model": "O(log n)",
+            "confidence": "High confidence in the model fit.",
+            "explanation": "The system appears to have logarithmic time complexity.",
+            "implications": "This indicates very good scalability, typical of efficient search algorithms or data structures.",
+            "recommendations": "This is already very efficient; focus on other aspects of optimization if needed.",
+            "r_squared": 0.9182429896356975
+          }
+        },
+        "load_scalability": {
+          "analysis": {
+            "success": true,
+            "saturation_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "peak_performance": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "response_time_inflection": {
+              "load": null,
+              "response_time": null,
+              "index": null
+            },
+            "optimal_load_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "response_time": 51.3598
+            },
+            "has_degradation": false,
+            "littles_law_correlation": 0.9578326876956131
+          },
+          "interpretation": {
+            "success": true,
+            "key_metrics": {
+              "saturation_load": 6,
+              "optimal_load": 6,
+              "has_degradation": false
+            },
+            "insights": [
+              "System throughput begins to saturate at approximately 6 users/requests.",
+              "The optimal load balancing throughput and response time is at 6 users/requests.",
+              "The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.",
+              "No performance degradation detected within the measured load range, suggesting good stability.",
+              "Strong correlation with Little's Law, indicating predictable queueing behavior."
+            ],
+            "recommendations": [
+              "Consider testing with higher load levels to identify the true system limits."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "/Users/jianjun.shen/perf-testing-ai/sample_jtl/synthetic_usl_12346/synthetic_usl_3node_20250715_141520.jtl",
+      "resource_level": 3,
+      "metrics": {
+        "total_requests": 5000,
+        "duration_seconds": 19.454,
+        "throughput": 257.01655186594013,
+        "avg_response_time": 76.977,
+        "error_percentage": 1.0,
+        "percentiles": {
+          "p50": 77.0,
+          "p90": 97.0,
+          "p95": 102.0,
+          "p99": 113.0
+        }
+      },
+      "config": "Config 3",
+      "scalability_analysis": {
+        "resource_levels": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "actual_speedups": [
+          1.0,
+          1.7737218170375033,
+          2.4627325999794385,
+          2.940707095506997,
+          3.689073689073689
+        ],
+        "models": {
+          "amdahl": 0.877114065957294,
+          "gustafson": 0.5888891474073287,
+          "usl": [
+            0.10502209633734812,
+            0.00338710295183755
+          ]
+        },
+        "interpretations": {
+          "amdahl": {
+            "parallelizable_fraction": 0.877114065957294,
+            "serial_fraction": 0.12288593404270598,
+            "max_theoretical_speedup": 8.13762785619121,
+            "assessment": "Good parallelizability. The system can benefit significantly from additional resources."
+          },
+          "gustafson": {
+            "scalable_fraction": 0.5888891474073287,
+            "fixed_fraction": 0.4111108525926713,
+            "assessment": "Moderate scalability with problem size. The system has some fixed overhead that limits perfect scaling."
+          },
+          "usl": {
+            "contention_factor": 0.10502209633734812,
+            "coherency_delay": 0.00338710295183755,
+            "assessment": "Good scalability. Some contention but limited coherency issues. The system can scale reasonably well.",
+            "peak_concurrency": 132.11554481642105
+          }
+        },
+        "optimization_suggestions": [
+          "The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size."
+        ],
+        "theoretical_projections": {},
+        "insufficient_data": false,
+        "model_errors": {
+          "amdahl": 0.004114711994471594,
+          "gustafson": 0.21086675559092097,
+          "usl": 0.0013265314045604105
+        }
+      },
+      "advanced_analysis": {
+        "algorithm_complexity": {
+          "analysis": {
+            "success": true,
+            "best_fit": "O(log n)",
+            "models": {
+              "O(1)": {
+                "params": [
+                  99.65544
+                ],
+                "r_squared": 0.0,
+                "rmse": 53.51397656678486,
+                "function": "<function constant_time>"
+              },
+              "O(log n)": {
+                "params": [
+                  -83.63236673759094,
+                  182.78288956009385
+                ],
+                "r_squared": 0.9182429896356975,
+                "rmse": 15.30134915273021,
+                "function": "<function logarithmic_time>"
+              },
+              "O(n)": {
+                "params": [
+                  -26.313867567567566,
+                  183.85981621621625
+                ],
+                "r_squared": 0.71569277349979,
+                "rmse": 28.533902536359907,
+                "function": "<function linear_time>"
+              },
+              "O(n log n)": {
+                "params": [
+                  -11.068748929954777,
+                  146.09518523233157
+                ],
+                "r_squared": 0.6083078582177532,
+                "rmse": 33.49188979512254,
+                "function": "<function linearithmic_time>"
+              },
+              "O(n\u00b2)": {
+                "params": [
+                  -3.0805439650744715,
+                  140.31862033898304
+                ],
+                "r_squared": 0.5161504531522589,
+                "rmse": 37.223944624681124,
+                "function": "<function quadratic_time>"
+              },
+              "O(n\u00b3)": {
+                "params": [
+                  -0.41894576814421636,
+                  126.13281254671449
+                ],
+                "r_squared": 0.3870363643828585,
+                "rmse": 41.897159431082045,
+                "function": "<function cubic_time>"
+              },
+              "O(c^n)": {
+                "params": [
+                  -552487.7703637808,
+                  552671.6205624536,
+                  1.0000476189792216
+                ],
+                "r_squared": 0.7156613952829731,
+                "rmse": 28.535477097598914,
+                "function": "<function exponential_time>"
+              }
+            },
+            "data_points": 5
+          },
+          "interpretation": {
+            "success": true,
+            "best_model": "O(log n)",
+            "confidence": "High confidence in the model fit.",
+            "explanation": "The system appears to have logarithmic time complexity.",
+            "implications": "This indicates very good scalability, typical of efficient search algorithms or data structures.",
+            "recommendations": "This is already very efficient; focus on other aspects of optimization if needed.",
+            "r_squared": 0.9182429896356975
+          }
+        },
+        "load_scalability": {
+          "analysis": {
+            "success": true,
+            "saturation_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "peak_performance": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "response_time_inflection": {
+              "load": null,
+              "response_time": null,
+              "index": null
+            },
+            "optimal_load_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "response_time": 51.3598
+            },
+            "has_degradation": false,
+            "littles_law_correlation": 0.9578326876956131
+          },
+          "interpretation": {
+            "success": true,
+            "key_metrics": {
+              "saturation_load": 6,
+              "optimal_load": 6,
+              "has_degradation": false
+            },
+            "insights": [
+              "System throughput begins to saturate at approximately 6 users/requests.",
+              "The optimal load balancing throughput and response time is at 6 users/requests.",
+              "The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.",
+              "No performance degradation detected within the measured load range, suggesting good stability.",
+              "Strong correlation with Little's Law, indicating predictable queueing behavior."
+            ],
+            "recommendations": [
+              "Consider testing with higher load levels to identify the true system limits."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "/Users/jianjun.shen/perf-testing-ai/sample_jtl/synthetic_usl_12346/synthetic_usl_4node_20250715_141520.jtl",
+      "resource_level": 4,
+      "metrics": {
+        "total_requests": 5000,
+        "duration_seconds": 16.292,
+        "throughput": 306.8990915786889,
+        "avg_response_time": 63.0684,
+        "error_percentage": 1.0,
+        "percentiles": {
+          "p50": 63.0,
+          "p90": 79.0,
+          "p95": 84.0,
+          "p99": 92.0
+        }
+      },
+      "config": "Config 4",
+      "scalability_analysis": {
+        "resource_levels": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "actual_speedups": [
+          1.0,
+          1.7737218170375033,
+          2.4627325999794385,
+          2.940707095506997,
+          3.689073689073689
+        ],
+        "models": {
+          "amdahl": 0.877114065957294,
+          "gustafson": 0.5888891474073287,
+          "usl": [
+            0.10502209633734812,
+            0.00338710295183755
+          ]
+        },
+        "interpretations": {
+          "amdahl": {
+            "parallelizable_fraction": 0.877114065957294,
+            "serial_fraction": 0.12288593404270598,
+            "max_theoretical_speedup": 8.13762785619121,
+            "assessment": "Good parallelizability. The system can benefit significantly from additional resources."
+          },
+          "gustafson": {
+            "scalable_fraction": 0.5888891474073287,
+            "fixed_fraction": 0.4111108525926713,
+            "assessment": "Moderate scalability with problem size. The system has some fixed overhead that limits perfect scaling."
+          },
+          "usl": {
+            "contention_factor": 0.10502209633734812,
+            "coherency_delay": 0.00338710295183755,
+            "assessment": "Good scalability. Some contention but limited coherency issues. The system can scale reasonably well.",
+            "peak_concurrency": 132.11554481642105
+          }
+        },
+        "optimization_suggestions": [
+          "The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size."
+        ],
+        "theoretical_projections": {},
+        "insufficient_data": false,
+        "model_errors": {
+          "amdahl": 0.004114711994471594,
+          "gustafson": 0.21086675559092097,
+          "usl": 0.0013265314045604105
+        }
+      },
+      "advanced_analysis": {
+        "algorithm_complexity": {
+          "analysis": {
+            "success": true,
+            "best_fit": "O(log n)",
+            "models": {
+              "O(1)": {
+                "params": [
+                  99.65544
+                ],
+                "r_squared": 0.0,
+                "rmse": 53.51397656678486,
+                "function": "<function constant_time>"
+              },
+              "O(log n)": {
+                "params": [
+                  -83.63236673759094,
+                  182.78288956009385
+                ],
+                "r_squared": 0.9182429896356975,
+                "rmse": 15.30134915273021,
+                "function": "<function logarithmic_time>"
+              },
+              "O(n)": {
+                "params": [
+                  -26.313867567567566,
+                  183.85981621621625
+                ],
+                "r_squared": 0.71569277349979,
+                "rmse": 28.533902536359907,
+                "function": "<function linear_time>"
+              },
+              "O(n log n)": {
+                "params": [
+                  -11.068748929954777,
+                  146.09518523233157
+                ],
+                "r_squared": 0.6083078582177532,
+                "rmse": 33.49188979512254,
+                "function": "<function linearithmic_time>"
+              },
+              "O(n\u00b2)": {
+                "params": [
+                  -3.0805439650744715,
+                  140.31862033898304
+                ],
+                "r_squared": 0.5161504531522589,
+                "rmse": 37.223944624681124,
+                "function": "<function quadratic_time>"
+              },
+              "O(n\u00b3)": {
+                "params": [
+                  -0.41894576814421636,
+                  126.13281254671449
+                ],
+                "r_squared": 0.3870363643828585,
+                "rmse": 41.897159431082045,
+                "function": "<function cubic_time>"
+              },
+              "O(c^n)": {
+                "params": [
+                  -552487.7703637808,
+                  552671.6205624536,
+                  1.0000476189792216
+                ],
+                "r_squared": 0.7156613952829731,
+                "rmse": 28.535477097598914,
+                "function": "<function exponential_time>"
+              }
+            },
+            "data_points": 5
+          },
+          "interpretation": {
+            "success": true,
+            "best_model": "O(log n)",
+            "confidence": "High confidence in the model fit.",
+            "explanation": "The system appears to have logarithmic time complexity.",
+            "implications": "This indicates very good scalability, typical of efficient search algorithms or data structures.",
+            "recommendations": "This is already very efficient; focus on other aspects of optimization if needed.",
+            "r_squared": 0.9182429896356975
+          }
+        },
+        "load_scalability": {
+          "analysis": {
+            "success": true,
+            "saturation_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "peak_performance": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "response_time_inflection": {
+              "load": null,
+              "response_time": null,
+              "index": null
+            },
+            "optimal_load_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "response_time": 51.3598
+            },
+            "has_degradation": false,
+            "littles_law_correlation": 0.9578326876956131
+          },
+          "interpretation": {
+            "success": true,
+            "key_metrics": {
+              "saturation_load": 6,
+              "optimal_load": 6,
+              "has_degradation": false
+            },
+            "insights": [
+              "System throughput begins to saturate at approximately 6 users/requests.",
+              "The optimal load balancing throughput and response time is at 6 users/requests.",
+              "The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.",
+              "No performance degradation detected within the measured load range, suggesting good stability.",
+              "Strong correlation with Little's Law, indicating predictable queueing behavior."
+            ],
+            "recommendations": [
+              "Consider testing with higher load levels to identify the true system limits."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "/Users/jianjun.shen/perf-testing-ai/sample_jtl/synthetic_usl_12346/synthetic_usl_6node_20250715_141520.jtl",
+      "resource_level": 6,
+      "metrics": {
+        "total_requests": 5000,
+        "duration_seconds": 12.987,
+        "throughput": 385.000385000385,
+        "avg_response_time": 51.3598,
+        "error_percentage": 1.0,
+        "percentiles": {
+          "p50": 51.0,
+          "p90": 65.0,
+          "p95": 68.0,
+          "p99": 76.0
+        }
+      },
+      "config": "Config 6",
+      "scalability_analysis": {
+        "resource_levels": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "actual_speedups": [
+          1.0,
+          1.7737218170375033,
+          2.4627325999794385,
+          2.940707095506997,
+          3.689073689073689
+        ],
+        "models": {
+          "amdahl": 0.877114065957294,
+          "gustafson": 0.5888891474073287,
+          "usl": [
+            0.10502209633734812,
+            0.00338710295183755
+          ]
+        },
+        "interpretations": {
+          "amdahl": {
+            "parallelizable_fraction": 0.877114065957294,
+            "serial_fraction": 0.12288593404270598,
+            "max_theoretical_speedup": 8.13762785619121,
+            "assessment": "Good parallelizability. The system can benefit significantly from additional resources."
+          },
+          "gustafson": {
+            "scalable_fraction": 0.5888891474073287,
+            "fixed_fraction": 0.4111108525926713,
+            "assessment": "Moderate scalability with problem size. The system has some fixed overhead that limits perfect scaling."
+          },
+          "usl": {
+            "contention_factor": 0.10502209633734812,
+            "coherency_delay": 0.00338710295183755,
+            "assessment": "Good scalability. Some contention but limited coherency issues. The system can scale reasonably well.",
+            "peak_concurrency": 132.11554481642105
+          }
+        },
+        "optimization_suggestions": [
+          "The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size."
+        ],
+        "theoretical_projections": {},
+        "insufficient_data": false,
+        "model_errors": {
+          "amdahl": 0.004114711994471594,
+          "gustafson": 0.21086675559092097,
+          "usl": 0.0013265314045604105
+        }
+      },
+      "advanced_analysis": {
+        "algorithm_complexity": {
+          "analysis": {
+            "success": true,
+            "best_fit": "O(log n)",
+            "models": {
+              "O(1)": {
+                "params": [
+                  99.65544
+                ],
+                "r_squared": 0.0,
+                "rmse": 53.51397656678486,
+                "function": "<function constant_time>"
+              },
+              "O(log n)": {
+                "params": [
+                  -83.63236673759094,
+                  182.78288956009385
+                ],
+                "r_squared": 0.9182429896356975,
+                "rmse": 15.30134915273021,
+                "function": "<function logarithmic_time>"
+              },
+              "O(n)": {
+                "params": [
+                  -26.313867567567566,
+                  183.85981621621625
+                ],
+                "r_squared": 0.71569277349979,
+                "rmse": 28.533902536359907,
+                "function": "<function linear_time>"
+              },
+              "O(n log n)": {
+                "params": [
+                  -11.068748929954777,
+                  146.09518523233157
+                ],
+                "r_squared": 0.6083078582177532,
+                "rmse": 33.49188979512254,
+                "function": "<function linearithmic_time>"
+              },
+              "O(n\u00b2)": {
+                "params": [
+                  -3.0805439650744715,
+                  140.31862033898304
+                ],
+                "r_squared": 0.5161504531522589,
+                "rmse": 37.223944624681124,
+                "function": "<function quadratic_time>"
+              },
+              "O(n\u00b3)": {
+                "params": [
+                  -0.41894576814421636,
+                  126.13281254671449
+                ],
+                "r_squared": 0.3870363643828585,
+                "rmse": 41.897159431082045,
+                "function": "<function cubic_time>"
+              },
+              "O(c^n)": {
+                "params": [
+                  -552487.7703637808,
+                  552671.6205624536,
+                  1.0000476189792216
+                ],
+                "r_squared": 0.7156613952829731,
+                "rmse": 28.535477097598914,
+                "function": "<function exponential_time>"
+              }
+            },
+            "data_points": 5
+          },
+          "interpretation": {
+            "success": true,
+            "best_model": "O(log n)",
+            "confidence": "High confidence in the model fit.",
+            "explanation": "The system appears to have logarithmic time complexity.",
+            "implications": "This indicates very good scalability, typical of efficient search algorithms or data structures.",
+            "recommendations": "This is already very efficient; focus on other aspects of optimization if needed.",
+            "r_squared": 0.9182429896356975
+          }
+        },
+        "load_scalability": {
+          "analysis": {
+            "success": true,
+            "saturation_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "peak_performance": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "index": 4
+            },
+            "response_time_inflection": {
+              "load": null,
+              "response_time": null,
+              "index": null
+            },
+            "optimal_load_point": {
+              "load": 6,
+              "throughput": 385.000385000385,
+              "response_time": 51.3598
+            },
+            "has_degradation": false,
+            "littles_law_correlation": 0.9578326876956131
+          },
+          "interpretation": {
+            "success": true,
+            "key_metrics": {
+              "saturation_load": 6,
+              "optimal_load": 6,
+              "has_degradation": false
+            },
+            "insights": [
+              "System throughput begins to saturate at approximately 6 users/requests.",
+              "The optimal load balancing throughput and response time is at 6 users/requests.",
+              "The optimal operating point coincides with throughput saturation, suggesting throughput-focused optimization.",
+              "No performance degradation detected within the measured load range, suggesting good stability.",
+              "Strong correlation with Little's Law, indicating predictable queueing behavior."
+            ],
+            "recommendations": [
+              "Consider testing with higher load levels to identify the true system limits."
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "scalability_analysis": {
+    "resource_levels": [
+      1,
+      2,
+      3,
+      4,
+      6
+    ],
+    "actual_speedups": [
+      1.0,
+      1.7737218170375033,
+      2.4627325999794385,
+      2.940707095506997,
+      3.689073689073689
+    ],
+    "models": {
+      "amdahl": 0.877114065957294,
+      "gustafson": 0.5888891474073287,
+      "usl": [
+        0.10502209633734812,
+        0.00338710295183755
+      ]
+    },
+    "interpretations": {
+      "amdahl": {
+        "parallelizable_fraction": 0.877114065957294,
+        "serial_fraction": 0.12288593404270598,
+        "max_theoretical_speedup": 8.13762785619121,
+        "assessment": "Good parallelizability. The system can benefit significantly from additional resources."
+      },
+      "gustafson": {
+        "scalable_fraction": 0.5888891474073287,
+        "fixed_fraction": 0.4111108525926713,
+        "assessment": "Moderate scalability with problem size. The system has some fixed overhead that limits perfect scaling."
+      },
+      "usl": {
+        "contention_factor": 0.10502209633734812,
+        "coherency_delay": 0.00338710295183755,
+        "assessment": "Good scalability. Some contention but limited coherency issues. The system can scale reasonably well.",
+        "peak_concurrency": 132.11554481642105
+      }
+    },
+    "optimization_suggestions": [
+      "The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size."
+    ],
+    "theoretical_projections": {},
+    "insufficient_data": false,
+    "model_errors": {
+      "amdahl": 0.004114711994471594,
+      "gustafson": 0.21086675559092097,
+      "usl": 0.0013265314045604105
+    }
+  },
+  "plot_paths": {
+    "throughput": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/throughput_vs_resource.png",
+    "response_time": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/response_time_vs_resource.png",
+    "speedup": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/speedup_vs_resource.png",
+    "models_comparison": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/scalability_models_comparison.png",
+    "efficiency": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/scalability_efficiency.png",
+    "heatmap": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/efficiency_heatmap.png",
+    "cost_efficiency": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/cost_efficiency_analysis.png",
+    "cost_model": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/cost_efficiency_analysis.png",
+    "theoretical_projections": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/theoretical_scalability_projections.png",
+    "model_characteristics": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/scalability_model_characteristics.png",
+    "algorithm_complexity": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/algorithm_complexity_analysis.png",
+    "load_scalability": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/load_scalability_analysis.png",
+    "capacity_model": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/load_capacity_model.png"
+  },
+  "report_paths": {
+    "markdown": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/scalability_report.md",
+    "html": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/scalability_report.html",
+    "docx": "/Users/jianjun.shen/perf-testing-ai/sample_analysis_results/synthetic_model2_detailed_20250715/scalability_report.docx"
+  }
+}

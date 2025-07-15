@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scalability Analysis Report</title>
+<style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .metrics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .metric-card {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            margin: 10px 0;
+        }
+        .metric-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .plot-container {
+            margin: 30px 0;
+        }
+        .plot-container img {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .plot-description {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .good {
+            color: #27ae60;
+        }
+        .warning {
+            color: #e67e22;
+        }
+        .critical {
+            color: #e74c3c;
+        }
+        .recommendation {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .card {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>Scalability Analysis Report</h1>
+<p>Generated on: 2025-07-15 15:06:09</p>
+<h2>Executive Summary</h2>
+<h3>Key Findings</h3>
+<div class="key-findings">
+<h4>Performance Metrics</h4>
+<ul>
+<li><strong>Maximum Throughput:</strong> 385.00 requests/sec at 6 nodes</li>
+<li><strong>Best Response Time:</strong> 51.36 ms at 6 nodes</li>
+<li><strong>Maximum Speedup:</strong> 3.69x at 6 nodes (compared to baseline)</li>
+<li><strong>Scalability Efficiency:</strong> 61.48% at 6 nodes</li>
+</ul>
+<h4>Scalability Model Parameters</h4>
+<ul>
+<li><strong>Amdahl's Law:</strong> 87.71% parallelizable portion, 12.29% serial portion</li>
+<li><strong>Gustafson's Law:</strong> 58.89% scalable portion, 41.11% fixed portion</li>
+<li><strong>Universal Scalability Law:</strong>
+<ul>
+<li>Contention factor (σ): 0.1050</li>
+<li>Coherency factor (κ): 0.0034</li>
+<li>Optimal concurrency: 132.12 nodes</li>
+</ul>
+</li>
+</ul>
+<h4>Algorithm Complexity</h4>
+<ul>
+<li><strong>Best fitting model:</strong> O(log n)</li>
+<li><strong>Confidence:</strong> High</li>
+</ul>
+<h4>Load Scalability</h4>
+<ul>
+<li><strong>Saturation point:</strong> 6 users/requests</li>
+<li><strong>Optimal load point:</strong> 6 users/requests</li>
+<li><strong>Performance degradation:</strong> None observed</li>
+</ul>
+</div>
+
+<p>This report presents the results of scalability analysis performed across 5 resource levels: 
+        1, 2, 3, 4, 6.</p>
+<div class="metrics-container"> <div class="metric-card">
+<div class="metric-label">Maximum Throughput</div>
+<div class="metric-value">385.00 req/s</div>
+<div>at resource level 6</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Best Response Time</div>
+<div class="metric-value">51.36 ms</div>
+<div>at resource level 6</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Maximum Speedup</div>
+<div class="metric-value">3.69x</div>
+<div>at resource level 6</div>
+<div class="warning">61.5% efficiency</div>
+</div>
+</div>
+<div class="card">
+<h3>Key Findings</h3>
+<ul>
+</ul>
+</div>
+<h2>Test Configuration</h2>
+<table>
+<tr>
+<th>Resource Level</th>
+<th>Throughput (req/s)</th>
+<th>Response Time (ms)</th>
+<th>Relative Speedup</th>
+</tr> <tr class="">
+<td>1</td>
+<td>104.36</td>
+<td>200.07</td>
+<td>1.00x</td>
+</tr>
+<tr class="warning">
+<td>2</td>
+<td>185.11</td>
+<td>106.81</td>
+<td>1.77x</td>
+</tr>
+<tr class="warning">
+<td>3</td>
+<td>257.02</td>
+<td>76.98</td>
+<td>2.46x</td>
+</tr>
+<tr class="warning">
+<td>4</td>
+<td>306.90</td>
+<td>63.07</td>
+<td>2.94x</td>
+</tr>
+<tr class="warning">
+<td>6</td>
+<td>385.00</td>
+<td>51.36</td>
+<td>3.69x</td>
+</tr>
+</table>
+<h2>Basic Scalability Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Resource Level</th>
+<th>Throughput Speedup</th>
+<th>Scalability Efficiency</th>
+</tr>
+</thead>
+<tbody> <tr>
+<td>1</td>
+<td>1.00x</td>
+<td class="good">100.00%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.77x</td>
+<td class="good">88.69%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.46x</td>
+<td class="warning">82.09%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.94x</td>
+<td class="warning">73.52%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>3.69x</td>
+<td class="warning">61.48%</td>
+</tr>
+</tbody>
+</table>
+<h2>Visual Analysis</h2>
+<h3>Enhanced Visualizations</h3>
+<p>The following advanced visualizations provide additional insights into the system's scalability characteristics:</p>
+<div class="enhanced-visualizations">
+<div class="viz-container">
+<h4>3D Scalability Surface</h4>
+<img alt="3D Scalability Surface" src="3d_scalability_surface.png" style="max-width: 100%; height: auto;"/>
+</div>
+<div class="viz-container">
+<h4>Efficiency Contour Map</h4>
+<img alt="Efficiency Contour Map" src="efficiency_contour_map.png" style="max-width: 100%; height: auto;"/>
+</div>
+<div class="viz-container">
+<h4>Scalability Radar Chart</h4>
+<img alt="Scalability Radar Chart" src="scalability_radar_chart.png" style="max-width: 100%; height: auto;"/>
+</div>
+<div class="viz-container">
+<h4>Resource Optimization Chart</h4>
+<img alt="Resource Optimization Chart" src="resource_optimization_chart.png" style="max-width: 100%; height: auto;"/>
+</div>
+</div>
+
+<p>The following plots provide visual representation of the scalability characteristics.</p>
+<div class="plot-container">
+<h3>Throughput vs. Resource Level</h3>
+<img alt="Throughput Plot" src="throughput_vs_resource.png"/>
+<p class="plot-description">This plot shows how the system throughput changes as resources are added. 
+            The trend line indicates the overall scaling pattern.</p>
+</div>
+<div class="plot-container">
+<h3>Response Time vs. Resource Level</h3>
+<img alt="Response Time Plot" src="response_time_vs_resource.png"/>
+<p class="plot-description">This plot illustrates how response times are affected by resource scaling. 
+            Lower values indicate better performance.</p>
+</div>
+<div class="plot-container">
+<h3>Speedup vs. Resource Level</h3>
+<img alt="Speedup Plot" src="speedup_vs_resource.png"/>
+<p class="plot-description">This plot compares actual speedup against ideal linear speedup. 
+            The gap between actual and ideal lines indicates efficiency loss as resources scale.</p>
+</div>
+<div class="plot-container">
+<h3>Scalability Models Comparison</h3>
+<img alt="Models Comparison Plot" src="scalability_models_comparison.png"/>
+<p class="plot-description">This plot compares the actual speedup with predictions from different scalability laws. 
+            The closest model to actual data points indicates which theoretical model best describes the system's scaling behavior.</p>
+</div>
+<div class="plot-container">
+<h3>Theoretical Scalability Projections</h3>
+<img alt="Theoretical Projections Plot" src="theoretical_scalability_projections.png"/>
+<p class="plot-description">This plot shows theoretical projections of different scalability models based on observed data. 
+            It predicts how the system might scale with additional resources beyond those tested.</p>
+</div>
+<div class="plot-container">
+<h3>Comparative Scalability Model Characteristics</h3>
+<img alt="Model Characteristics Plot" src="scalability_model_characteristics.png"/>
+<p class="plot-description">This educational plot illustrates the fundamental differences between various scalability models 
+            with different parameters. It helps identify which theoretical model best describes your system's behavior.</p>
+</div>
+<div class="plot-container">
+<h3>Scalability Efficiency Analysis</h3>
+<img alt="Scalability Efficiency Plot" src="scalability_efficiency.png"/>
+<p class="plot-description">This plot shows how efficiently your system scales as resources increase. 
+            The efficiency is calculated as speedup divided by resource ratio, with 100% representing perfect linear scaling. 
+            Declining efficiency indicates diminishing returns from additional resources.</p>
+</div>
+<div class="plot-container">
+<h3>Efficiency Heatmap</h3>
+<img alt="Efficiency Heatmap" src="efficiency_heatmap.png"/>
+<p class="plot-description">This heatmap visualizes scaling efficiency between different resource levels. 
+            Each cell shows the efficiency when scaling from the baseline (row) to the target (column) resource level. 
+            Values close to 1.0 (green) indicate good scaling efficiency.</p>
+</div>
+<div class="plot-container">
+<h3>Cost Efficiency Analysis</h3>
+<img alt="Cost Efficiency Analysis" src="cost_efficiency_analysis.png"/>
+<p class="plot-description">This dual visualization shows the relationship between cost and performance (left) 
+            and the performance-to-cost ratio (right) for different resource levels. 
+            Higher values in the right plot indicate more cost-effective configurations.</p>
+</div>
+<h2>Optimization Suggestions</h2>
+<div class="recommendation">
+            The system performance is predicted to peak at 132.1 resources and decline with additional resources. Consider limiting deployment to this size.
+        </div>
+</div>
+</body>
+</html>

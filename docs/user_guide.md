@@ -77,7 +77,6 @@ For optimal organization, maintain the following directory structure:
 scalability_analysis_agentic_ai/
 ├── drivers/                   # Python scripts for analysis tasks
 ├── sample_analysis_results/   # Output directory for analysis results
-├── sample_generated_scripts/  # JMeter test plan files
 ├── sample_synthetic_jtl/      # JTL files for testing
 └── workflows/                 # Analysis workflow definitions
 ```

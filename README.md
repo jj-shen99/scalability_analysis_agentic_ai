@@ -8,7 +8,7 @@ This framework provides tools for analyzing JMeter JTL files and other performan
 
 ## Directory Structure
 
-- **`/scalability_analysis/`**: Core framework modules
+- **`/drivers/`**: Core framework modules
   - Scalability models implementation
   - JTL file parsing and analysis
   - Visualization and reporting capabilities
@@ -17,7 +17,6 @@ This framework provides tools for analyzing JMeter JTL files and other performan
   - Organized by test runs and model types
 - **`/sample_synthetic_jtl/`**: Sample JTL files for testing
 - **`/workflows/`**: Analysis workflow definitions
-- **`/drivers/`**: Python scripts for specific analysis tasks
 - **`/docs/`**: Comprehensive documentation
   - User guide
   - Technical summary

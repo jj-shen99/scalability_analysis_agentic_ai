@@ -1,5 +1,5 @@
 ---
-description: Scalability analysis of jmeter testing results.
+description: Scalability analysis of performance testing results: synthetic model test
 ---
 conduct scalability analysis of these synthetic jmeter testing results to test the model:
 1) result files:
@@ -15,7 +15,7 @@ conduct scalability analysis of these synthetic jmeter testing results to test t
  - formats: md html docx
  - comparative analysis
  - load scalability
-
+ - enhanced visualization
 
 
 

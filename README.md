@@ -106,6 +106,26 @@ The generated reports include:
 - markdown2
 - seaborn
 
+## Documentation
+
+Comprehensive documentation is available in the `/docs` directory:
+
+- **[User Guide](docs/user_guide.md)**: Complete guide for using the framework, including:
+  - Installation and setup
+  - Input data requirements
+  - Basic and advanced usage
+  - Understanding scalability models
+  - Interpreting results
+  - Troubleshooting
+
+- **[Technical Summary](docs/technical_summary.md)**: Technical overview of the framework, including:
+  - Architecture design
+  - Module interactions
+  - Data flow diagrams
+  - Implementation details
+  - Performance considerations
+  - Future development roadmap
+
 ## Contributing
 
 To extend this framework:

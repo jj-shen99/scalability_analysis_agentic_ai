@@ -18,6 +18,9 @@ This framework provides tools for analyzing JMeter JTL files and other performan
 - **`/sample_synthetic_jtl/`**: Sample JTL files for testing
 - **`/workflows/`**: Analysis workflow definitions
 - **`/drivers/`**: Python scripts for specific analysis tasks
+- **`/docs/`**: Comprehensive documentation
+  - User guide
+  - Technical summary
 
 ## Key Features
 
@@ -30,6 +33,8 @@ This framework provides tools for analyzing JMeter JTL files and other performan
 - **Multi-format Reporting**: Create reports in Markdown, HTML, and DOCX formats
 - **Theoretical Projections**: Generate performance projections with limited data points
 - **Comparative Analysis**: Compare performance across different node configurations
+- **Algorithm Complexity Analysis**: Evaluate algorithmic scaling characteristics
+- **Load Scalability Analysis**: Analyze system behavior under different load conditions
 
 ## Installation
 
@@ -64,14 +69,20 @@ python3 drivers/scalability_analyzer_main.py \
 
 ### Parameters
 
-- `--files`: JTL files to analyze
-- `--levels`: Resource levels corresponding to each file (e.g., node counts)
-- `--output-dir`: Directory to save results (optional)
-- `--formats`: Report formats to generate (optional, defaults to all)
-- `--sla`: SLA threshold for response time in ms (optional)
-- `--show-plots`: Display plots during analysis (optional)
-- `--comparative`: Generate comparative analysis between configurations (optional)
-- `--configs`: Configuration names for each JTL file (optional)
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `--files` | JTL files to analyze (space-separated) | `--files file1.jtl file2.jtl` |
+| `--levels` | Resource levels for each file | `--levels 2 4 8` |
+| `--output-dir` | Directory to save results | `--output-dir results/test1` |
+| `--formats` | Report formats to generate | `--formats md html docx` |
+| `--sla` | SLA threshold for response time (ms) | `--sla 200` |
+| `--show-plots` | Display plots during analysis | `--show-plots` |
+| `--comparative` | Generate comparative analysis | `--comparative` |
+| `--configs` | Configuration names for each file | `--configs "2-node" "4-node"` |
+| `--algorithm-complexity` | Analyze algorithm complexity | `--algorithm-complexity` |
+| `--load-scalability` | Analyze load scalability | `--load-scalability` |
+| `--load-levels` | Load levels for load scalability | `--load-levels 10 20 30` |
+| `--workflow` | Path to workflow definition file | `--workflow workflows/custom.md` |
 
 ## Example Workflows
 
@@ -95,17 +106,6 @@ The generated reports include:
 - **Theoretical Projections**: Projected performance with additional resources
 - **Optimization Suggestions**: Recommendations for improving scalability
 
-## Dependencies
-
-- Python 3.6+
-- pandas
-- numpy
-- matplotlib
-- scipy
-- python-docx
-- markdown2
-- seaborn
-
 ## Documentation
 
 Comprehensive documentation is available in the `/docs` directory:
@@ -125,6 +125,17 @@ Comprehensive documentation is available in the `/docs` directory:
   - Implementation details
   - Performance considerations
   - Future development roadmap
+
+## Dependencies
+
+- Python 3.6+
+- pandas
+- numpy
+- matplotlib
+- scipy
+- python-docx
+- markdown2
+- seaborn
 
 ## Contributing
 

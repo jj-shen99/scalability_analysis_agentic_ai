@@ -59,61 +59,83 @@ Distributed software applications exhibit several characteristics that impact th
 
 ## 3. Framework Architecture
 
-### 3.1 System Design
+### 3.1 System Design Philosophy
 
-The Scalability Analysis Framework follows a modular pipeline architecture with four primary components:
+The Scalability Analysis Framework is built on a modular, extensible architecture that separates concerns into distinct functional layers. This design approach ensures maintainability, testability, and the ability to extend functionality without disrupting existing components. The framework follows established software engineering principles including separation of concerns, single responsibility, and dependency inversion to create a robust and scalable analysis platform.
 
-1. **Data Ingestion Module**: Processes JMeter JTL files in both XML and CSV formats
-2. **Analysis Engine**: Applies mathematical models and calculates scalability metrics
-3. **Visualization Generator**: Creates comprehensive plots and visual representations
-4. **Report Generator**: Produces multi-format reports (Markdown, HTML, DOCX)
+The architecture employs a pipeline-based processing model where data flows through sequential stages of transformation and analysis. Each stage is designed to be independent and replaceable, allowing for future enhancements and customizations. The modular design also enables selective execution of analysis components based on user requirements and available computational resources.
 
-### 3.2 Core Components
+### 3.2 Core Architectural Components
 
-#### 3.2.1 Data Processing Pipeline
+#### 3.2.1 Data Ingestion Layer
 
-The framework processes performance testing data through a structured pipeline:
+The data ingestion layer serves as the entry point for performance testing data and handles the complexity of parsing multiple file formats. This layer is responsible for:
 
-```python
-def analyze_jtl(file_path):
-    """Analyzes JTL file and extracts performance metrics"""
-    # Parse JTL file (XML or CSV format)
-    # Extract timestamps, response times, success rates
-    # Calculate throughput, error rates, percentiles
-    # Return structured performance metrics
-```
+**Format Support and Parsing**: The framework supports both XML and CSV formats of JMeter JTL files, automatically detecting the format and applying the appropriate parsing strategy. The XML parser handles the hierarchical structure of JMeter's native output format, while the CSV parser provides efficient processing of large datasets with minimal memory overhead.
 
-#### 3.2.2 Model Implementation
+**Data Validation and Cleansing**: Input data undergoes comprehensive validation to ensure data quality and consistency. The system identifies and handles common data quality issues such as missing timestamps, invalid response times, and inconsistent labeling. Configurable data cleansing rules allow users to specify how to handle edge cases and outliers.
 
-Each scalability model is implemented with parameter fitting capabilities:
+**Metadata Extraction**: Beyond basic performance metrics, the ingestion layer extracts contextual metadata including test configuration details, sampling strategies, and environmental information. This metadata is crucial for proper interpretation of results and ensuring reproducible analysis.
 
-```python
-def fit_universal_scalability_law(resource_levels, speedups):
-    """Fits USL parameters to observed data"""
-    # Non-linear optimization to find σ and κ parameters
-    # Returns fitted model with confidence intervals
-    # Provides theoretical projections for additional resources
-```
+**Memory Management**: The ingestion layer implements streaming processing techniques to handle large JTL files efficiently. Data is processed in chunks to maintain consistent memory usage regardless of input file size, enabling analysis of datasets that exceed available system memory.
 
-#### 3.2.3 Visualization Engine
+#### 3.2.2 Analysis Engine
 
-The framework generates multiple visualization types:
+The analysis engine forms the computational core of the framework, implementing sophisticated mathematical models and statistical analysis techniques:
 
-- Throughput vs. Resource Level plots
-- Response Time scaling analysis
-- Speedup and Efficiency curves
-- Model comparison visualizations
-- Theoretical projection plots
-- Cost-efficiency analysis charts
+**Scalability Model Implementation**: The engine implements three fundamental scalability laws with robust parameter estimation capabilities. Amdahl's Law analysis focuses on identifying the parallelizable and serial portions of system execution. Gustafson's Law extends this analysis to scaled-workload scenarios where problem size increases with resources. The Universal Scalability Law provides the most comprehensive analysis by incorporating both contention and coherency factors that affect real-world distributed systems.
 
-### 3.3 Advanced Features
+**Statistical Analysis and Curve Fitting**: Advanced statistical techniques are employed for model parameter estimation, including non-linear least squares optimization with confidence interval calculation. The engine handles edge cases such as insufficient data points, non-convergent optimization, and statistical outliers through robust estimation techniques and fallback strategies.
 
-The framework includes several advanced analysis capabilities:
+**Performance Metrics Calculation**: The engine computes a comprehensive suite of performance metrics including throughput calculations with various aggregation methods, response time statistics including percentiles and distribution analysis, error rate analysis with categorization by error type, and efficiency metrics that quantify resource utilization effectiveness.
 
-- **Algorithm Complexity Analysis**: Determines computational complexity patterns
-- **Load Scalability Analysis**: Identifies saturation points and optimal load levels
-- **Comparative Analysis**: Compares multiple system configurations
-- **Theoretical Projections**: Predicts performance with additional resources
+**Theoretical Projection Capabilities**: Using fitted model parameters, the engine generates theoretical projections for system performance under different resource configurations. These projections include confidence intervals and sensitivity analysis to help users understand the reliability of predictions.
+
+#### 3.2.3 Visualization Generation System
+
+The visualization system transforms numerical analysis results into intuitive graphical representations:
+
+**Multi-Dimensional Plotting**: The system generates various plot types optimized for different aspects of scalability analysis. Throughput scaling plots show how system capacity changes with resources, while response time analysis reveals latency characteristics under different loads. Speedup curves compare actual performance gains against theoretical models, and efficiency plots highlight resource utilization trends.
+
+**Advanced Visualization Techniques**: Beyond basic line and scatter plots, the framework generates sophisticated visualizations including heatmaps for multi-dimensional efficiency analysis, contour plots for exploring parameter spaces, and comparative charts that overlay multiple system configurations or time periods.
+
+**Customization and Styling**: The visualization system supports extensive customization options including color schemes optimized for different presentation contexts, configurable axis scaling and labeling, annotation capabilities for highlighting key insights, and export options for various output formats and resolutions.
+
+**Interactive Elements**: Where supported by the output format, visualizations include interactive elements such as tooltips with detailed data points, zoom and pan capabilities for exploring large datasets, and dynamic filtering options for focusing on specific aspects of the analysis.
+
+#### 3.2.4 Report Generation Framework
+
+The report generation framework synthesizes analysis results into comprehensive, actionable documents:
+
+**Multi-Format Output**: The framework supports multiple output formats to accommodate different use cases and audiences. Markdown output provides lightweight, version-controllable reports suitable for technical documentation. HTML reports offer rich formatting with embedded interactive elements and are ideal for web-based sharing. DOCX format enables integration with corporate reporting workflows and supports advanced formatting requirements.
+
+**Intelligent Content Generation**: The reporting system employs template-based content generation with intelligent adaptation based on analysis results. Report sections are dynamically populated with relevant insights, and the narrative adapts to highlight the most significant findings. Automated interpretation of model parameters provides actionable recommendations for system optimization.
+
+**Executive Summary Generation**: Each report includes an automatically generated executive summary that distills complex technical analysis into key business insights. The summary highlights critical performance thresholds, identifies primary bottlenecks, and provides prioritized recommendations for improvement.
+
+**Reproducibility Documentation**: Reports include comprehensive documentation of analysis parameters, data sources, and methodological choices to ensure reproducibility. This documentation enables peer review, audit trails, and replication of analysis results.
+
+### 3.3 Advanced Analytical Capabilities
+
+#### 3.3.1 Algorithm Complexity Analysis
+
+The framework includes sophisticated capabilities for analyzing the algorithmic complexity characteristics of distributed systems. This analysis goes beyond simple performance measurement to understand the fundamental computational characteristics that drive scalability behavior. The system fits various complexity models including linear, logarithmic, polynomial, and exponential patterns to observed performance data, providing insights into the underlying algorithmic efficiency of the system under test.
+
+#### 3.3.2 Load Scalability Analysis
+
+Load scalability analysis examines how systems behave under varying load conditions rather than just resource configurations. This analysis identifies critical performance thresholds including saturation points where additional load degrades performance, optimal operating points that balance throughput and response time, and capacity limits that define maximum sustainable load levels. The analysis incorporates queueing theory principles to model system behavior under different load patterns.
+
+#### 3.3.3 Comparative Analysis Framework
+
+The comparative analysis capability enables systematic comparison of multiple system configurations, versions, or deployment scenarios. This feature supports A/B testing scenarios, performance regression analysis, and architectural decision-making by providing statistical comparisons of scalability characteristics across different system variants.
+
+#### 3.3.4 Theoretical Modeling and Projection
+
+The framework's theoretical modeling capabilities extend beyond simple curve fitting to provide robust predictions of system behavior under untested conditions. These projections incorporate uncertainty quantification and sensitivity analysis to help users understand the reliability and limitations of performance predictions.
+
+### 3.4 Integration and Extensibility
+
+The framework architecture is designed for seamless integration with existing performance testing workflows and continuous integration pipelines. Standardized interfaces enable integration with popular testing tools, while plugin architectures support custom extensions for specialized analysis requirements. The modular design ensures that new scalability models, visualization types, and report formats can be added without disrupting existing functionality.
 
 ## 4. Case Studies
 

@@ -1,18 +1,18 @@
-# A Comprehensive Framework for Scalability Analysis of Agentic AI Systems
+# A Comprehensive Framework for Scalability Analysis of Distributed Software Applications
 
 ## Abstract
 
-As artificial intelligence systems evolve toward more autonomous and agentic behaviors, understanding their scalability characteristics becomes crucial for deployment in production environments. This paper presents a comprehensive framework for analyzing the scalability characteristics of agentic AI systems through performance testing data analysis. The framework implements multiple mathematical models including Amdahl's Law, Gustafson's Law, and the Universal Scalability Law (USL) to provide insights into system performance under varying loads and resource allocations. We demonstrate the framework's effectiveness through two detailed case studies that reveal critical scalability patterns and optimization opportunities. The framework generates multi-format reports with advanced visualizations, enabling data-driven decisions for resource allocation and system optimization in agentic AI deployments.
+As distributed software applications become increasingly complex and resource-intensive, understanding their scalability characteristics becomes crucial for deployment in production environments. This paper presents a comprehensive open-source framework for analyzing the scalability characteristics of distributed software applications through performance testing data analysis. The framework implements multiple mathematical models including Amdahl's Law, Gustafson's Law, and the Universal Scalability Law (USL) to provide insights into system performance under varying loads and resource allocations. We demonstrate the framework's effectiveness through two detailed case studies that reveal critical scalability patterns and optimization opportunities. The framework generates multi-format reports with advanced visualizations, enabling data-driven decisions for resource allocation and system optimization in distributed deployments. The framework is available as open source at https://github.com/jj-shen99/scalability_analysis_agentic_ai.
 
-**Keywords:** Scalability Analysis, Agentic AI, Performance Testing, Universal Scalability Law, Distributed Systems
+**Keywords:** Scalability Analysis, Distributed Systems, Performance Testing, Universal Scalability Law, Software Engineering
 
 ## 1. Introduction
 
-The emergence of agentic artificial intelligence systems—AI systems capable of autonomous decision-making and goal-directed behavior—has introduced new challenges in understanding and predicting their scalability characteristics. Unlike traditional software systems, agentic AI systems exhibit complex behaviors that can vary significantly under different resource configurations and load conditions. This complexity necessitates sophisticated analysis tools that can model and predict system behavior across various scaling scenarios.
+The increasing complexity of distributed software applications—systems that span multiple nodes, services, and geographic locations—has introduced new challenges in understanding and predicting their scalability characteristics. Unlike monolithic applications, distributed systems exhibit complex behaviors that can vary significantly under different resource configurations and load conditions. This complexity necessitates sophisticated analysis tools that can model and predict system behavior across various scaling scenarios.
 
 Scalability analysis has long been a cornerstone of system performance evaluation, with foundational work by Amdahl (1967) establishing the theoretical limits of parallel processing. However, the unique characteristics of agentic AI systems—including their adaptive behaviors, resource-intensive computations, and complex inter-component communications—require specialized analysis approaches that extend beyond traditional scalability models.
 
-This paper introduces a comprehensive framework specifically designed for analyzing the scalability characteristics of agentic AI systems. The framework processes performance testing data from tools like Apache JMeter and applies multiple mathematical models to understand system behavior under varying resource allocations. By implementing Amdahl's Law, Gustafson's Law, and the Universal Scalability Law, the framework provides a multi-faceted view of system scalability that enables informed decision-making for resource allocation and optimization.
+This paper introduces a comprehensive open-source framework specifically designed for analyzing the scalability characteristics of distributed software applications. The framework processes performance testing data from tools like Apache JMeter and applies multiple mathematical models to understand system behavior under varying resource allocations. By implementing Amdahl's Law, Gustafson's Law, and the Universal Scalability Law, the framework provides a multi-faceted view of system scalability that enables informed decision-making for resource allocation and optimization.
 
 ## 2. Background and Related Work
 
@@ -44,18 +44,18 @@ where `σ` represents the contention factor and `κ` represents the coherency fa
 
 ### 2.2 Performance Analysis in AI Systems
 
-Recent work in AI system performance analysis has focused primarily on computational efficiency and resource utilization (Chen et al., 2019; Wang et al., 2020). However, limited research has addressed the specific scalability challenges of agentic AI systems, particularly in distributed deployment scenarios.
+Recent work in distributed system performance analysis has focused primarily on computational efficiency and resource utilization (Chen et al., 2019; Wang et al., 2020). However, limited research has addressed the comprehensive scalability analysis of distributed software applications, particularly in multi-node deployment scenarios.
 
-Shen (2022) provides comprehensive coverage of software scalability measurement techniques in "SOFTWARE SCALABILITY AND ITS MEASUREMENT," establishing methodological foundations that inform our framework design. The work emphasizes the importance of empirical measurement combined with theoretical modeling for accurate scalability assessment.
+Shen (2022) provides comprehensive coverage of software scalability measurement techniques in "SOFTWARE SCALABILITY AND ITS MEASUREMENT" (Independently published, available at https://www.amazon.com/SOFTWARE-SCALABILITY-ITS-MEASUREMENT-Shen/dp/B0B6XSL1ZW), establishing methodological foundations that inform our framework design. The work emphasizes the importance of empirical measurement combined with theoretical modeling for accurate scalability assessment.
 
-### 2.3 Agentic AI System Characteristics
+### 2.3 Distributed System Characteristics
 
-Agentic AI systems exhibit several characteristics that impact their scalability:
+Distributed software applications exhibit several characteristics that impact their scalability:
 
-1. **Adaptive Resource Consumption**: Resource usage patterns that change based on environmental conditions and learned behaviors
-2. **Inter-Agent Communication**: Complex communication patterns between autonomous agents that can create bottlenecks
+1. **Variable Resource Consumption**: Resource usage patterns that change based on load conditions and system state
+2. **Inter-Service Communication**: Complex communication patterns between distributed services that can create bottlenecks
 3. **State Management**: Distributed state synchronization requirements that affect coherency costs
-4. **Dynamic Load Balancing**: Self-organizing behaviors that can impact traditional load distribution assumptions
+4. **Load Distribution**: Dynamic load balancing mechanisms that can impact traditional scaling assumptions
 
 ## 3. Framework Architecture
 
@@ -127,6 +127,12 @@ This case study analyzes a synthetic agentic AI system across four resource leve
 - **Test Duration**: Standardized load testing across all configurations
 - **Metrics Collected**: Throughput, response time, error rates
 
+![Throughput vs Resource Level - Case Study 1](../sample_analysis_results/ScalabilityAnalysis_USL-2-4-8-16-node_model_test/throughput_vs_resource.png)
+*Figure 1: Throughput scaling behavior showing peak performance at 8 nodes with subsequent degradation*
+
+![Scalability Models Comparison - Case Study 1](../sample_analysis_results/ScalabilityAnalysis_USL-2-4-8-16-node_model_test/scalability_models_comparison.png)
+*Figure 2: Comparison of theoretical scalability models with observed performance data*
+
 #### 4.1.2 Performance Results
 
 | Resource Level | Throughput (req/s) | Avg Response Time (ms) | Error % |
@@ -175,6 +181,12 @@ This case study examines a more complex agentic AI system across five resource l
 | 3 | 257.02 | 76.98 | 1.00 |
 | 4 | 306.90 | 63.07 | 1.00 |
 | 6 | 385.00 | 51.36 | 1.00 |
+
+![Scalability Model Characteristics - Case Study 2](../sample_analysis_results/synthetic_model2_detailed_20250715/scalability_model_characteristics.png)
+*Figure 3: Comprehensive scalability analysis showing excellent scaling potential with low contention*
+
+![Efficiency Heatmap - Case Study 2](../sample_analysis_results/synthetic_model2_detailed_20250715/efficiency_heatmap.png)
+*Figure 4: Resource efficiency analysis demonstrating declining efficiency with increased resources*
 
 #### 4.2.3 Advanced Scalability Analysis
 
@@ -247,9 +259,9 @@ Several limitations and opportunities for future development have been identifie
 3. **Machine Learning Integration**: Opportunity for predictive modeling using ML techniques
 4. **Real-time Analysis**: Potential for streaming analysis of live performance data
 
-### 6.3 Implications for Agentic AI Systems
+### 6.3 Implications for Distributed Systems
 
-The case studies reveal important implications for agentic AI system design:
+The case studies reveal important implications for distributed software application design:
 
 1. **Architecture Matters**: System architecture significantly impacts scalability characteristics
 2. **Contention Management**: Effective resource contention management is crucial for scaling
@@ -258,7 +270,7 @@ The case studies reveal important implications for agentic AI system design:
 
 ## 7. Conclusion
 
-This paper presents a comprehensive framework for analyzing the scalability characteristics of agentic AI systems. Through the implementation of multiple mathematical models and advanced visualization capabilities, the framework enables detailed understanding of system behavior under varying resource configurations.
+This paper presents a comprehensive open-source framework for analyzing the scalability characteristics of distributed software applications. Through the implementation of multiple mathematical models and advanced visualization capabilities, the framework enables detailed understanding of system behavior under varying resource configurations.
 
 The two case studies demonstrate the framework's effectiveness in identifying scalability patterns, bottlenecks, and optimization opportunities. Case Study 1 revealed significant contention issues limiting scalability, while Case Study 2 showed excellent scalability potential with proper system design.
 
@@ -269,7 +281,7 @@ Key contributions of this work include:
 3. **Practical Validation**: Demonstrated effectiveness through detailed case studies
 4. **Actionable Insights**: Generation of specific optimization recommendations
 
-The framework addresses a critical need in the agentic AI community for sophisticated scalability analysis tools. As agentic AI systems become more prevalent in production environments, understanding their scalability characteristics will be essential for successful deployment and operation.
+The framework addresses a critical need in the distributed systems community for sophisticated scalability analysis tools. As distributed software applications become more prevalent in production environments, understanding their scalability characteristics will be essential for successful deployment and operation. The open-source nature of the framework (available at https://github.com/jj-shen99/scalability_analysis_agentic_ai) enables widespread adoption and community contributions.
 
 Future work will focus on extending the framework to support dynamic scalability analysis, integrating machine learning techniques for predictive modeling, and developing real-time analysis capabilities for production monitoring.
 
@@ -283,7 +295,7 @@ Gunther, N. J. (2007). *Guerrilla capacity planning: A tactical approach to plan
 
 Gustafson, J. L. (1988). Reevaluating Amdahl's law. *Communications of the ACM*, 31(5), 532-533.
 
-Shen, J. J. (2022). *Software Scalability and Its Measurement*. Performance Engineering Press.
+Shen, J. J. (2022). *Software Scalability and Its Measurement*. Independently published. Available at: https://www.amazon.com/SOFTWARE-SCALABILITY-ITS-MEASUREMENT-Shen/dp/B0B6XSL1ZW
 
 Wang, M., Liu, J., & Fang, B. (2020). Performance analysis and optimization of distributed deep learning systems. *Journal of Parallel and Distributed Computing*, 144, 90-104.
 

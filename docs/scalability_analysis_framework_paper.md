@@ -10,7 +10,7 @@ As distributed software applications become increasingly complex and resource-in
 
 The increasing complexity of distributed software applications—systems that span multiple nodes, services, and geographic locations—has introduced new challenges in understanding and predicting their scalability characteristics. Unlike monolithic applications, distributed systems exhibit complex behaviors that can vary significantly under different resource configurations and load conditions. This complexity necessitates sophisticated analysis tools that can model and predict system behavior across various scaling scenarios.
 
-Scalability analysis has long been a cornerstone of system performance evaluation, with foundational work by Amdahl (1967) establishing the theoretical limits of parallel processing. However, the unique characteristics of agentic AI systems—including their adaptive behaviors, resource-intensive computations, and complex inter-component communications—require specialized analysis approaches that extend beyond traditional scalability models.
+Scalability analysis has long been a cornerstone of system performance evaluation, with foundational work by Amdahl (1967) establishing the theoretical limits of parallel processing. However, the unique characteristics of distributed systems—including their variable resource consumption patterns, complex inter-service communications, and distributed state management requirements—require specialized analysis approaches that extend beyond traditional scalability models.
 
 This paper introduces a comprehensive open-source framework specifically designed for analyzing the scalability characteristics of distributed software applications. The framework processes performance testing data from tools like Apache JMeter and applies multiple mathematical models to understand system behavior under varying resource allocations. By implementing Amdahl's Law, Gustafson's Law, and the Universal Scalability Law, the framework provides a multi-faceted view of system scalability that enables informed decision-making for resource allocation and optimization.
 
@@ -272,7 +272,7 @@ The case studies reveal important implications for distributed software applicat
 
 This paper presents a comprehensive open-source framework for analyzing the scalability characteristics of distributed software applications. Through the implementation of multiple mathematical models and advanced visualization capabilities, the framework enables detailed understanding of system behavior under varying resource configurations.
 
-The two case studies demonstrate the framework's effectiveness in identifying scalability patterns, bottlenecks, and optimization opportunities. Case Study 1 revealed significant contention issues limiting scalability, while Case Study 2 showed excellent scalability potential with proper system design.
+The two case studies demonstrate the framework's effectiveness in identifying scalability patterns, bottlenecks, and optimization opportunities. Case Study 1 revealed significant contention issues limiting scalability, while Case Study 2 showed excellent scalability potential with proper system design. Detailed analysis results and data for both case studies are available in the GitHub repository at https://github.com/jj-shen99/scalability_analysis_agentic_ai.
 
 Key contributions of this work include:
 
@@ -298,43 +298,3 @@ Gustafson, J. L. (1988). Reevaluating Amdahl's law. *Communications of the ACM*,
 Shen, J. J. (2022). *Software Scalability and Its Measurement*. Independently published. Available at: https://www.amazon.com/SOFTWARE-SCALABILITY-ITS-MEASUREMENT-Shen/dp/B0B6XSL1ZW
 
 Wang, M., Liu, J., & Fang, B. (2020). Performance analysis and optimization of distributed deep learning systems. *Journal of Parallel and Distributed Computing*, 144, 90-104.
-
-## Appendix A: Framework Usage Examples
-
-### A.1 Basic Usage
-
-```bash
-python3 drivers/scalability_analyzer_main.py \
-  --files sample_synthetic_jtl/2node.jtl sample_synthetic_jtl/4node.jtl \
-  --levels 2 4 \
-  --output-dir sample_analysis_results/basic_analysis
-```
-
-### A.2 Advanced Analysis
-
-```bash
-python3 drivers/scalability_analyzer_main.py \
-  --files sample_synthetic_jtl/file1.jtl sample_synthetic_jtl/file2.jtl sample_synthetic_jtl/file3.jtl \
-  --levels 2 4 8 \
-  --output-dir sample_analysis_results/comprehensive_analysis \
-  --formats md html docx \
-  --sla 200 \
-  --configs "2-node" "4-node" "8-node" \
-  --comparative \
-  --algorithm-complexity \
-  --load-scalability
-```
-
-## Appendix B: Key Visualizations
-
-The framework generates several types of visualizations that are crucial for understanding scalability characteristics:
-
-1. **Throughput vs. Resource Level**: Shows how system throughput scales with additional resources
-2. **Response Time Analysis**: Demonstrates response time improvements and potential degradation points
-3. **Speedup Curves**: Compares actual speedup against theoretical models
-4. **Efficiency Heatmaps**: Visualizes resource utilization effectiveness across different configurations
-5. **Model Comparison Charts**: Enables direct comparison of Amdahl's, Gustafson's, and USL predictions
-6. **Theoretical Projections**: Provides predictions for performance with additional resources
-7. **Cost-Efficiency Analysis**: Supports business decision-making by showing cost-performance trade-offs
-
-These visualizations are automatically generated in high-resolution formats suitable for both technical analysis and presentation purposes.
